@@ -1,0 +1,26 @@
+version: '3'
+
+services: 
+  laravel:
+    build: 
+      context: ./laravel
+      dockerfile: Dockerfile.prod
+    image: edugsdf/laravelfullcycle2:prod
+    container_name: srv_laravel
+    networks: 
+      - laranet
+
+  nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile.prod
+    image: edugsdf/nginx:prod
+    container_name: srv_nginx
+    networks: 
+      - laranet
+    ports: 
+      - "80:80"
+
+networks: 
+  laranet:
+    driver: bridge
