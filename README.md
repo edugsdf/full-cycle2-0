@@ -1,8 +1,9 @@
 # Full Cycle 2.0
 
-### Imagem Golang - Menor que 2MB.
+### Desafio Nginx proxy node
 
+Executar o comando abaixo: (atenção para o nome do docker-compose.**node**.yaml)
 ```javascript
-docker run edugsdf/golangfullcycle:latest
+docker-compose -f docker-compose.node.yaml
 ```
-Código fonte: https://github.com/edugsdf/full-cycle2-0/tree/main/docker/golang
+Código fonte (NODE): https://github.com/edugsdf/full-cycle2-0/tree/main/docker/node

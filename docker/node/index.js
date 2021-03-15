@@ -40,7 +40,7 @@ app.post('/add', (req, res) => {
     }
 
     res.send(`<h1> Cadastrado com sucesso!!! </h1>`+
-            `<script>setTimeout(function(){ window.location.href = '/?qsnome=${req.body.nome}&nocache=${numero}' }, 2000);</script>`);
+            `<script>setTimeout(function(){ window.location.href = '/?nocache=${numero}' }, 1200);</script>`);
 
 });
 
@@ -49,14 +49,18 @@ app.post('/add', (req, res) => {
 app.get('/', (req, res) => {
 
     if (Object.keys(req.query).length !== 0) {
-        pool.query(`SELECT id, name FROM people WHERE name = ? `, [req.query.qsnome], (error, results) => {
-        //pool.query(`SELECT id, name FROM people WHERE id = (SELECT MAX(id) FROM people)`,(error, results) => {
-            if (error) throw error;
-            strTextoNome =  `<p>ID: ${results[0].id} <br />NOME: ${results[0].name} </p> `;
-            console.log('nomeBD => '+ results[0].name)
+        pool.query(`SELECT id, name FROM people ORDER BY id DESC`,function (error, result) {
+            if (error)
+                throw error;
+            strTextoNome = `<h3>Lista de nomes</h3>`;
+            Object.keys(result).forEach(function (key) {
+                var row = result[key];
+                strTextoNome = strTextoNome +  `<p>NOME = ${row.name} </p> `;
+                console.log(`Nome => ${row.name}`);
+            });
         });
     }
-    res.send(`<h1> Full Cycle 2 </h1>`+
+    res.send(`<h1> Full Cycle Rocks! </h1>`+
             ` <hr />`+
             `<form action="/add" method="POST" id="form1">
                 <input type="text" id="nome" name="nome" placeholder="Nome" required>

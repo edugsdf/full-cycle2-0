@@ -5,6 +5,7 @@ services:
     build: 
       context: ./node
       dockerfile: Dockerfile
+    image: edugsdf/ola-node-express
     container_name: srv_node
     entrypoint: dockerize -wait tcp://srv_mysql:3306 -timeout 20s docker-entrypoint.sh node index
     networks:
@@ -21,7 +22,7 @@ services:
     image: mysql:5.7
     command: --innodb-use-native-aio=0
     container_name: srv_mysql
-    restart: always
+    #restart: always
     tty: true
     volumes:
       - ./mysql/dbs:/var/lib/mysql
@@ -41,7 +42,7 @@ services:
     networks: 
       - node-network
     ports: 
-      - "80:80"
+      - "8080:80"
     depends_on:
       - app
 
