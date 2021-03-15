@@ -1,6 +1,4 @@
-# Full Cycle 2.0
-
-### Desafio Nginx proxy NODE
+# Desafio Nginx proxy NODE
 
 Executar o comando abaixo: (atenção para o nome do docker-compose.**node**.yaml)
 ```
