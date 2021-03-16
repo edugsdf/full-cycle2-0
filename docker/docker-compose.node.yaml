@@ -20,12 +20,13 @@ services:
 
   db:
     image: mysql:5.7
-    command: --innodb-use-native-aio=0
+    command: --innodb-use-native-aio=0 --init-file /tmp/create_table.sql
     container_name: srv_mysql
     #restart: always
     tty: true
     volumes:
       - ./mysql/dbs:/var/lib/mysql
+      - ./mysql/create_table.sql:/tmp/create_table.sql
     environment: 
       - MYSQL_DATABASE=nodedb
       - MYSQL_ROOT_PASSWORD=root
