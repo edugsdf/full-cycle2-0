@@ -12,7 +12,7 @@ services:
       - node-network
     volumes: 
       - ./node:/usr/src/app
-      - ./usr/src/app/node_modules
+      #- ./usr/src/app/node_modules
     tty: true
     ports: 
       - "3000:3000"
@@ -44,7 +44,7 @@ services:
     networks: 
       - node-network
     ports: 
-      - "8080:80"
+      - "8181:80"
     depends_on:
       - app
 
