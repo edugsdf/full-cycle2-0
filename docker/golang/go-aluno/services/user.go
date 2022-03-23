@@ -20,7 +20,7 @@ func NewUserService() *UserService {
 
 func (*UserService) AddUser(ctx context.Context, req *pb.User) (*pb.User, error) {
 
-	//Insert into database
+	//Insert into database - Teste para commit
 	fmt.Println("nome => " + req.Name)
 
 	return &pb.User{
